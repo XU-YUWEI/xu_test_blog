@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xu.kinggame.dao.AdminMapper">
+<resultMap id="BaseResultMap" type="com.xu.kinggame.entity.User">
+    <id column="admin_id" jdbcType="BIGINT" property="adminId" />
+    <result column="login_name" jdbcType="VARCHAR" property="loginname" />
+    <result column="login_password" jdbcType="VARCHAR" property="loginpassword" />
+    <result column="admin_nick_name" jdbcType="VARCHAR" property="adminnickname" />
+    <result column="locked" jdbcType="TINYINT" property="locked" />
+  </resultMap>
+  
+  <sql id="Base_Column_List">
+  admin_id,login_name,login_password,admin_nick_name,locked
+  </sql>
+  <select id="login" resultMap="BaseResultMap">
+  select
+  <include refid="Base_Column_List"></include>
+  from tb_admin_user
+  where login_name=#{username,jdbcType=VARCHAR} AND login_password=#{password,jdbcType=VARCHAR} AND locked = 0 
+  </select>
+  <insert id="addUser" parameterType="com.xu.kinggame.entity.User">
+  insert into tb_admin_user
+  <trim prefix="(" suffix=")" suffixOverrides=",">
+  <if test="adminId!=null">
+    admin_id,
+  </if>
+  <if test="loginname != null">
+        login_name,
+  </if>
+  <if test="loginpassword != null">
+        login_password,
+  </if>
+  <if test="adminnickname != null">
+        admin_nick_name,
+  </if>
+  <if test="locked != null">
+        locked,
+  </if>
+  </trim>
+  <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="adminId != null">
+        #{adminId,jdbcType=TINYINT},
+      </if>
+      <if test="loginname != null">
+        #{loginname,jdbcType=VARCHAR},
+      </if>
+      <if test="loginpassword != null">
+        #{loginpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="adminnickname != null">
+        #{adminnickname,jdbcType=VARCHAR},
+      </if>
+      <if test="locked != null">
+        #{locked,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  
+  <!-- <select id="selectUserById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  select
+    <include refid="Base_Column_List" />
+    from tb_admin_user
+    where admin_id = #{adminId,jdbcType=TINYINT}
+  </select> -->
+  <select id="selectUserById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_admin_user
+    where admin_id = #{adminId,jdbcType=TINYINT}
+  </select>
+  <update id="updatePassword" parameterType="com.xu.kinggame.entity.User">
+  update tb_admin_user
+  <set>
+      <if test="loginname != null">
+        login_name = #{loginname,jdbcType=VARCHAR},
+      </if>
+      <if test="loginpassword != null">
+        login_password = #{loginpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="adminnickname != null">
+        admin_nick_name = #{adminnickname,jdbcType=VARCHAR},
+      </if>
+      <if test="locked != null">
+        locked = #{locked,jdbcType=TINYINT},
+      </if>
+    </set>
+  where admin_id = #{adminId,jdbcType=INTEGER}
+  </update>
+
+</mapper>

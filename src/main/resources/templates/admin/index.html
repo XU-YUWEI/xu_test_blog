@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<header th:replace="admin/header::header-fragment"></header>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+    <!-- 引入页面头header-fragment -->
+    <div th:replace="admin/header::header-nav"></div>
+    <!-- 引入工具栏sidebar-fragment -->
+    <div th:replace="admin/sidebar::sidebar-fragment(${path})"></div>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- Main content -->
+         <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        
+        <!-- /.row -->
+        <!-- Main row -->
+        
+  <div class="row">
+          <!-- Left col -->
+          <section class="col-lg-6 connectedSortable">
+            <!-- Custom tabs (Charts with tabs)-->
+            <div class="card">
+              <a th:href="@{/index}">
+                <div class="small-box bg-info">
+              <div class="inner">
+
+                <p><h2>网站主页</h2>	</p>
+              </div>
+              
+              <b class="small-box-footer">进入查看 >></b>
+            </div>
+              </a>
+              
+            </div>
+			<div class="card">
+              <a th:href="@{/admin/profile}">
+                    
+                <div class="small-box bg-warning">
+              <div class="inner">
+
+                <p><h2>修改密码</h2>	</p>
+              </div>
+              
+              <b class="small-box-footer">进入查看 >></b>
+		    
+            </div>
+              </a>
+              
+            </div>
+            <!-- /.card -->
+
+            <!-- DIRECT CHAT -->
+            
+    </section>
+	<section class="col-lg-6 connectedSortable">
+
+            <!-- Map card -->
+            <div class="card">
+              <a th:href="@{/admin/logout}">
+                <div class="small-box bg-success">
+              <div class="inner">
+                <p><h2>重新登陆</h2>	</p>
+              </div>
+             
+              <b class="small-box-footer">进入查看 >></b>
+            </div>
+              
+              </a>
+            </div>
+			<div class="card">
+              <a th:href="@{/admin/register}"
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <p><h2>注册账号</h2>	</p>
+              </div>
+              
+			<b class="small-box-footer">进入查看 >></b>
+            </div>
+              </a>
+              
+            </div>
+            <!-- /.card -->
+
+            <!-- solid sales graph -->
+            
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <!-- 引入页脚footer-fragment -->
+    <div th:replace="admin/footer::footer-fragment"></div>
+</div>
+<!-- jQuery -->
+<script th:src="@{/admin/plugins/jquery/jquery.min.js}"></script>
+<!-- jQuery UI 1.11.4 -->
+<script th:src="@{/admin/plugins/jQueryUI/jquery-ui.min.js}"></script>
+<!-- Bootstrap 4 -->
+<script th:src="@{/admin/plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<!-- AdminLTE App -->
+<script th:src="@{/admin/dist/js/adminlte.min.js}"></script>
+</body>
+</html>
