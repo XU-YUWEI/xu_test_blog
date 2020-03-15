@@ -1,5 +1,5 @@
 # xu_test_blog
-尝试开发一个基于adminLTE+springboot+mybatis的论坛，博客，目前还有未完善的地方，以后会一一补上
+开发一个基于adminLTE+springboot+mybatis的论坛，博客，目前还有未完善的地方，以后会一一补上
 ## 环境
 * JDK：1.8
 * Maven：2.1.1
